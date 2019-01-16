@@ -44,6 +44,37 @@ server.route({
     }
 });
 
+//delete data
+server.route({
+    method: "DELETE",
+    path: '/imax/del/{id}',
+    handler: (request, reply) => {
+        return server.methods.imax.DeleteTask(server, request)
+        .then(reply);
+    }
+});
+
+//list data
+server.route({
+    method: "GET",
+    path: '/imax/list',
+    handler: (request, reply) => {
+        return server.methods.imax.ListTask(server, request)
+        .then(reply);
+    }
+});
+//edit data 
+server.route({
+    method: "PUT",
+    path: '/imax/edit/{id}',
+    handler: (request, reply) => {
+        return server.methods.imax.EditTask(server,request)
+        .then(reply);
+    
+    }
+
+});
+
 
 // Start the server
 const start = async function () {
