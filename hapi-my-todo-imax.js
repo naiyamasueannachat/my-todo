@@ -18,16 +18,18 @@ exports.plugin = {
         return new Promise((resolve, reject) => {
             server.methods.datasource.Insert(request.mongo.db, body)
                 .then((res) => {
+                    console.log(res)
                     resolve({
                         status: 200,
                         message: "Add successful",
                         data: (res.ops && res.ops.length > 0) ? res.ops[0] : {}
                     });
-                }).catch((err) => {
+                }).catch((error) => {
+                    console.log(error)
                     reject({
                         status: 500,
                         message: "Add incomplate",
-                        data: err
+                        data: null
                     });
                 })
         });
