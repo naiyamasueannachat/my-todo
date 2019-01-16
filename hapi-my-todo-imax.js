@@ -13,7 +13,10 @@ exports.plugin = {
     const addTask = (server, request) => {
         const body = {
             name: request.payload.name,
-            price: request.payload.price,
+            description: request.payload.description,
+            status: request.payload.status,
+            startdate: request.payload.startdate
+
         }
         return new Promise((resolve, reject) => {
             server.methods.datasource.Insert(request.mongo.db, body)
