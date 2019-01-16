@@ -4,13 +4,13 @@ exports.plugin = {
     register: async function (server, options) {
 
         server.method({
-            name: "imax.AddProduct",
-            method: addProduct
+            name: "imax.AddTask",
+            method: addTask
         });
     }
 };
 
-    const addProduct = (server, request) => {
+    const addTask = (server, request) => {
         const body = {
             name: request.payload.name,
             price: request.payload.price,
