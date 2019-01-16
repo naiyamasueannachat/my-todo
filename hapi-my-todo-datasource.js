@@ -4,11 +4,11 @@ exports.plugin = {
     register: async function (server, options) {
         server.method({
             name: "datasource.Insert",
-            method: InsertProduct,
+            method: InsertTask,
         });
     }
 };
 
-const InsertProduct = (db, body) => {
+const InsertTask = (db, body) => {
     return db.collection('mg-imax').insert(body);
 }

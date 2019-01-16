@@ -4,30 +4,35 @@ exports.plugin = {
     register: async function (server, options) {
 
         server.method({
-            name: "imax.AddProduct",
-            method: addProduct
+            name: "imax.AddTask",
+            method: addTask
         });
     }
 };
 
-    const addProduct = (server, request) => {
+    const addTask = (server, request) => {
         const body = {
             name: request.payload.name,
-            price: request.payload.price,
+            description: request.payload.description,
+            status: request.payload.status,
+            startdate: request.payload.startdate
+
         }
         return new Promise((resolve, reject) => {
             server.methods.datasource.Insert(request.mongo.db, body)
                 .then((res) => {
+                    console.log(res)
                     resolve({
                         status: 200,
                         message: "Add successful",
                         data: (res.ops && res.ops.length > 0) ? res.ops[0] : {}
                     });
-                }).catch((err) => {
+                }).catch((error) => {
+                    console.log(error)
                     reject({
                         status: 500,
                         message: "Add incomplate",
-                        data: err
+                        data: null
                     });
                 })
         });

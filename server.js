@@ -39,7 +39,7 @@ server.route({
     method: "POST",
     path: "/imax/add",
     handler: (request, reply) => {
-        return server.methods.imax.AddProduct(server, request)
+        return server.methods.imax.AddTask(server, request)
         .then(reply);
     }
 });
