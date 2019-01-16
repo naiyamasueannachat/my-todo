@@ -28,8 +28,8 @@ const InsertTask = (db, body) => {
     return db.collection('mg-imax').insert(body);
 };
 
-const DeleteTask = (db, status) => {
-    return db.collection('mg-imax').deleteMany({status:status});
+const DeleteTask = (db, id) => {
+    return db.collection('mg-imax').deleteOne({_id:id});
 
 };
 

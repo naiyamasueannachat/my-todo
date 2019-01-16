@@ -47,7 +47,7 @@ server.route({
 //delete data
 server.route({
     method: "DELETE",
-    path: '/imax/del/{status}',
+    path: '/imax/del/{id}',
     handler: (request, reply) => {
         return server.methods.imax.DeleteTask(server, request)
         .then(reply);

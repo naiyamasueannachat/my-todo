@@ -84,12 +84,12 @@ const listTask = (server, request) => {
 }
 
 const deleteTask = (server, request) => {
-    const _status = request.params.status;
+    const ObjectID = request.mongo.ObjectID;
+    const id = new ObjectID(request.params.id);
     return new Promise((resolve, reject) => {
-        server.methods.datasource.Delete(request.mongo.db, _status)
+        server.methods.datasource.Delete(request.mongo.db,id)
             .then((res) => {
-                console.log(res.deletedCount)
-                if (res.deletedCount) {
+                if (res.result.n == 1) {
                     resolve({
                         status: 200,
                         message: "Delete successful",
