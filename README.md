@@ -53,7 +53,7 @@
 }
 ```
 ### Delete Task
-`GET` /imax/delete/{id}
+`GET` /imax/del/{id}
 
 #### Response body
 ```json
