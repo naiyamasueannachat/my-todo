@@ -34,9 +34,13 @@ const editTask = (server, request) => {
     return new Promise((resolve, reject) => {
         server.methods.datasource.Edit(request.mongo.db, id, body)
             .then((res) => {
-                resolve(res)
-            })
-    })
+                resolve(
+                    {status: 200,
+                    message: "Edit successful",
+                    data: (res.ops && res.ops.length > 0) ? res.ops[0] : {}}
+                    );
+            });
+    });
 }
 
 const addTask = (server, request) => {
